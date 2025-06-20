@@ -20,4 +20,9 @@ class JobListingController extends Controller
         $jobs = $this->jobService->getAllActiveJobs();
         return view('jobs.index', compact('jobs'));
     }
+    public function show($slug)
+    {
+        $job = $this->jobService->getJobBySlug($slug);
+        return view('jobs.show', compact('job'));
+    }
 }

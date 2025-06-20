@@ -17,4 +17,9 @@ class JobListingRepository
     {
         return JobListing::active()->latest()->paginate(6);
     }
+
+    public function findBySlug(string $slug): ?JobListing
+    {
+        return JobListing::where('slug', $slug)->firstOrFail();
+    }
 }

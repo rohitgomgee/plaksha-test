@@ -21,4 +21,8 @@ class JobListingService
     {
         return $this->repository->getAllActivePaginated();
     }
+    public function getJobBySlug(string $slug): ?JobListing
+    {
+        return $this->repository->findBySlug($slug);
+    }
 }

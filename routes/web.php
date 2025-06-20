@@ -10,3 +10,5 @@ Route::get('/', function () {
 
 // Public routes
 Route::get('/', [JobListingController::class, 'index'])->name('home');
+
+Route::get('/careers/{slug}', [JobListingController::class, 'show'])->name('jobs.show');
