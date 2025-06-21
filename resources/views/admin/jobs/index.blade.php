@@ -42,7 +42,7 @@
                             <td>{{ $job->location }}</td>
                             <td>{{ $job->employment_type }}</td>
                             <td>
-                                <form action="#" method="POST" class="d-inline">
+                                <form action="{{ route('admin.jobs.toggle', $job->slug) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('PATCH')
                                     <button type="submit" class="btn btn-sm {{ $job->is_active ? 'btn-success' : 'btn-secondary' }}">
@@ -52,11 +52,11 @@
                             </td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="#"
+                                    <a href="{{ route('admin.jobs.edit', $job->slug) }}"
                                         class="btn btn-sm btn-info">
                                         <i class="bi bi-pencil"></i> Edit
                                     </a>
-                                    <form action="#"
+                                    <form action="{{ route('admin.jobs.destroy', $job->slug) }}"
                                         method="POST"
                                         class="d-inline"
                                         onsubmit="return confirm('Are you sure you want to delete this job listing?');">
