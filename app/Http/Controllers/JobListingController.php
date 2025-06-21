@@ -25,4 +25,14 @@ class JobListingController extends Controller
         $job = $this->jobService->getJobBySlug($slug);
         return view('jobs.show', compact('job'));
     }
+    public function adminIndex()
+    {
+        $jobs = $this->jobService->getAllJobs();
+        return view('admin.jobs.index', compact('jobs'));
+    }
+
+    public function create()
+    {
+        return view('admin.jobs.form');
+    }
 }

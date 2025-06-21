@@ -25,4 +25,16 @@ class JobListingService
     {
         return $this->repository->findBySlug($slug);
     }
+    public function getAllJobs(): LengthAwarePaginator
+    {
+        return $this->repository->getAllPaginated();
+    }
+    public function createJob(array $data): JobListing
+    {
+        if (!isset($data['slug'])) {
+            $data['slug'] = Str::slug($data['title']);
+        }
+
+        return $this->repository->create($data);
+    }
 }

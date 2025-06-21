@@ -26,7 +26,7 @@
                         <a class="nav-link" href="{{ route('home') }}">Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
+                        <a class="nav-link" href="{{ route('admin.jobs.index') }}">Admin</a>
                     </li>
                 </ul>
             </div>

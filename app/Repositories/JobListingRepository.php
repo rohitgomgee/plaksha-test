@@ -22,4 +22,8 @@ class JobListingRepository
     {
         return JobListing::where('slug', $slug)->firstOrFail();
     }
+    public function getAllPaginated(): LengthAwarePaginator
+    {
+        return JobListing::latest()->paginate(6);
+    }
 }
