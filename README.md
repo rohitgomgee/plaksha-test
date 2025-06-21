@@ -25,7 +25,7 @@ A Laravel-based job board application for managing and displaying job listings a
 
     ```bash
     git clone <repository-url>
-    cd plaksha-job
+    cd plaksha-test
     ```
 
 2. **Install PHP Dependencies**
