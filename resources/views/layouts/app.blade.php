@@ -11,7 +11,7 @@
     {{-- Canonical URL --}}
     <link rel="canonical" href="{{ url()->current() }}">
     {{-- Robots Tag --}}
-    <meta name="robots" content="@yield('meta_robots', 'index, follow')">
+    <meta name="robots" content="@yield('meta_robots', 'noindex, nofollow')">
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('images/favicon.ico') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
