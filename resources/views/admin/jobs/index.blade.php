@@ -46,7 +46,7 @@
                                     @csrf
                                     @method('PATCH')
                                     <button type="submit" class="btn btn-sm {{ $job->is_active ? 'btn-success' : 'btn-secondary' }}">
-                                        {{ $job->is_active ? 'Active' : 'Inactive' }}
+                                        {{ $job->is_active ? 'Open' : 'Close' }}
                                     </button>
                                 </form>
                             </td>

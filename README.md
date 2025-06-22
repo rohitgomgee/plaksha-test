@@ -83,6 +83,78 @@ A Laravel-based job board application for managing and displaying job listings a
 
     The application will be available at `http://localhost:8000`
 
+## Deploying on Apache/Nginx Server
+
+### Apache Configuration
+
+1. Make sure `mod_rewrite` is enabled.
+
+2. Point the document root to Laravel’s `public/` directory.
+
+3. Example Apache Virtual Host:
+
+    ```apache
+    <VirtualHost *:80>
+        ServerName plaksha-job-board.local
+        DocumentRoot /var/www/html/plaksha-test/public
+
+        <Directory /var/www/html/plaksha-test/public>
+            AllowOverride All
+            Require all granted
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/plaksha-error.log
+        CustomLog ${APACHE_LOG_DIR}/plaksha-access.log combined
+    </VirtualHost>
+    ```
+
+4. Restart Apache:
+
+    ```bash
+    sudo service apache2 restart
+    ```
+
+---
+
+### Nginx Configuration
+
+1. Point the root to `public/` folder.
+
+2. Example Nginx Site Config:
+
+    ```nginx
+    server {
+        listen 80;
+        server_name plaksha-job-board.local;
+        root /var/www/html/plaksha-test/public;
+
+        index index.php index.html;
+
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
+        }
+
+        location ~ /\.ht {
+            deny all;
+        }
+    }
+    ```
+
+3. Restart Nginx:
+
+    ```bash
+    sudo service nginx restart
+    ```
+
+---
+
 ## Directory Structure
 
 -   `app/Models/` - Contains the JobListing model
@@ -142,6 +214,7 @@ A Laravel-based job board application for managing and displaying job listings a
     ```
 
 3. **Database Issues**
+
     ```bash
     php artisan config:clear
     php artisan migrate:fresh
