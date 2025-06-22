@@ -2,6 +2,8 @@
 
 @section('title', $job->title)
 
+@section('meta_description',Str::limit(strip_tags($job->department . ' — ' . $job->description), 160))
+
 @section('content')
 <div class="container">
     <div class="row">

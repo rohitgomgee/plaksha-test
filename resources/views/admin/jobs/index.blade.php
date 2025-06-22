@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Manage Jobs')
-
+@section('meta_description', 'View and manage all job postings in the admin dashboard. Edit, delete, or publish job openings for Plaksha University.')
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">

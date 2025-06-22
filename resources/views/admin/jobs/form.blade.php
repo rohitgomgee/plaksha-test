@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', isset($job) ? 'Edit Job' : 'Create Job')
-
+@section('meta_description', 'Use the admin panel to create a new job posting for Plaksha University. Enter job title, description, and other details to publish it on the careers page.')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
